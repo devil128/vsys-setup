@@ -27,7 +27,7 @@ spec:
 
       spec:
         accessModes: [ "ReadWriteOnce" ]
-        storageClassName: longhorn
+        storageClassName: longhorn-single
         resources:
           requests:
             storage: 10Gi
@@ -35,7 +35,6 @@ spec:
   selector:
     matchLabels:
       app: syslog-server
-
   serviceName: syslog-server
 
 
