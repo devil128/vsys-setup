@@ -3,6 +3,6 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: longhorn-single
 provisioner: driver.longhorn.io
-allowVolumeExpansion: true
+allowVolumeExpansion: false
 parameters:
   numberOfReplicas: "1"

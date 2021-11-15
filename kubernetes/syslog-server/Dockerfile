@@ -8,3 +8,4 @@ $template RemoteStore, "/var/log/remote/%$year%/%$Month%/%$Day%/%$Hour%.log" \n\
 :source, !isequal, "localhost" -?RemoteStore \n\
 :source, isequal, "last" ~ ' > /etc/rsyslog.conf
 ENTRYPOINT ["rsyslogd", "-n"]
+

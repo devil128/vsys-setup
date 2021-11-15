@@ -17,7 +17,7 @@ spec:
             - containerPort: 514
               protocol: UDP
           volumeMounts:
-            - mountPath: /data/db
+            - mountPath: /var/log
               name: syslog-server
       imagePullSecrets:
         - name: regcred
@@ -35,6 +35,6 @@ spec:
   selector:
     matchLabels:
       app: syslog-server
-  serviceName: syslog-server
+  serviceName: syslog-server-service
 
 
