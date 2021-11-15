@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: syslog-server
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: syslog-server
+        track: stable
+    spec:
+      containers:
+        - name: syslog-server
+          image: registry.projectdw.de/rsyslog
+          ports:
+            - containerPort: 514
+              protocol: UDP
+          volumeMounts:
+            - mountPath: /data/db
+              name: syslog-server
+      imagePullSecrets:
+        - name: regcred
+  volumeClaimTemplates:
+    - metadata:
+        name: syslog-server
+
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: longhorn
+        resources:
+          requests:
+            storage: 10Gi
+
+  selector:
+    matchLabels:
+      app: syslog-server
+
+  serviceName: syslog-server
+
+
