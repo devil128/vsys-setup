@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: udp-controller
   name: ingress-nginx-udp-controller
-  namespace: ingress-nginx
+  namespace: kube-system
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local

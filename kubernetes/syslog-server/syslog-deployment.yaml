@@ -13,6 +13,7 @@ spec:
       containers:
         - name: syslog-server
           image: registry.projectdw.de/rsyslog
+          imagePullPolicy: Always
           ports:
             - containerPort: 514
               protocol: UDP

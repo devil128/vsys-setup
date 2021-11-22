@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
   name: ingress-nginx-udp-controller
-  namespace: ingress-nginx
+  namespace: kube-system
 spec:
   selector:
     matchLabels:
@@ -88,10 +88,6 @@ spec:
             - name: webhook-cert
               mountPath: /usr/local/certificates/
               readOnly: true
-          resources:
-            requests:
-              cpu: 100m
-              memory: 90Mi
       nodeSelector:
         kubernetes.io/os: linux
       serviceAccountName: ingress-nginx
