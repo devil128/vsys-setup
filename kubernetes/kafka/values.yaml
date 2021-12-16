@@ -1272,6 +1272,12 @@ provisioning:
     - name: log-stream
       partitions: 10
       replicationFactor: 1
+    - name: IpLog
+      partitions: 10
+      replicationFactor: 1
+    - name: Packetfilter
+      partitions: 10
+      replicationFactor: 1
 
 
 ## @section Zookeeper chart parameters
