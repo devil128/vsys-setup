@@ -16,7 +16,7 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 514
-              protocol: UDP
+              protocol: TCP
           volumeMounts:
             - mountPath: /var/log
               name: syslog-server

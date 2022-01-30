@@ -1,1 +1,1 @@
-helm upgrade --install -n ingress-nginx ingress-nginx ingress-nginx/ingress-nginx --values values.yaml --wait
+helm upgrade --install -n kube-system ingress-nginx ingress-nginx/ingress-nginx --values values.yaml --wait
