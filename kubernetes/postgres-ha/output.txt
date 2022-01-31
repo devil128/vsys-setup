@@ -1,5 +1,5 @@
 NAME: postgres-ha
-LAST DEPLOYED: Sun Nov 28 18:45:10 2021
+LAST DEPLOYED: Mon Jan 31 15:54:05 2022
 NAMESPACE: postgres
 STATUS: deployed
 REVISION: 1
@@ -28,8 +28,6 @@ To connect to your database run the following command:
     kubectl run postgres-ha-postgresql-ha-client --rm --tty -i --restart='Never' --namespace postgres --image docker.io/bitnami/postgresql-repmgr:11.13.0-debian-10-r58 --env="PGPASSWORD=$POSTGRES_PASSWORD"  \
         --command -- psql -h postgres-ha-postgresql-ha-pgpool -p 5432 -U postgres -d postgres
 
-    kubectl run postgres-ha-postgresql-ha-client --rm --tty -i --restart='Never' --namespace postgres --image docker.io/bitnami/postgresql-repmgr:11.13.0-debian-10-r58 --env="PGPASSWORD=$POSTGRES_PASSWORD"  \
-        --command /bin/bash
 To connect to your database from outside the cluster execute the following commands:
 
     kubectl port-forward --namespace postgres svc/postgres-ha-postgresql-ha-pgpool 5432:5432 &
