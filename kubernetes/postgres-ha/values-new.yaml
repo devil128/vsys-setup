@@ -122,9 +122,9 @@ diagnosticMode:
 postgresqlImage:
   registry: docker.io
   repository: bitnami/postgresql-repmgr
-  tag: 11.14.0-debian-10-r0
+  tag: 11.14.0-debian-10-r86
   ## Specify a imagePullPolicy. Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
-  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+  ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
   ##
   pullPolicy: IfNotPresent
   ## Optionally specify an array of imagePullSecrets.
@@ -154,6 +154,9 @@ postgresql:
   ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#update-strategies
   ##
   updateStrategyType: RollingUpdate
+  ## @param postgresql.containerPort PostgreSQL port
+  ##
+  containerPort: 5432
   ## @param postgresql.hostAliases Deployment pod host aliases
   ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/
   ##
@@ -265,7 +268,7 @@ postgresql:
   ##
   sidecars: []
   ## PostgreSQL containers' resource requests and limits
-  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ## We usually recommend not to specify default resources and to leave this as a conscious
   ## choice for the user. This also increases chances charts run on environments with little
   ## resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -377,7 +380,7 @@ postgresql:
   upgradeRepmgrExtension: false
   ## @param postgresql.pgHbaTrustAll Configures PostgreSQL HBA to trust every user
   ##
-  pgHbaTrustAll: false
+  pgHbaTrustAll: true
   ## @param postgresql.syncReplication Make the replication synchronous. This will wait until the data is synchronized in all the replicas before other query can be run. This ensures the data availability at the expenses of speed.
   ##
   syncReplication: false
@@ -397,6 +400,10 @@ postgresql:
   repmgrConnectTimeout: 5
   repmgrReconnectAttempts: 3
   repmgrReconnectInterval: 5
+  ## EXPERMENTAL: Use pg_rewind for standby failover
+  ## @param postgresql.usePgRewind Use pg_rewind for standby failover (experimental)
+  ##
+  usePgRewind: false
   ## Audit settings
   ## https://github.com/bitnami/bitnami-docker-postgresql#auditing
   ##
@@ -430,10 +437,10 @@ postgresql:
   sharedPreloadLibraries: "pgaudit, repmgr"
   ## @param postgresql.maxConnections Maximum total connections
   ##
-  maxConnections: ""
+  maxConnections: "2560"
   ## @param postgresql.postgresConnectionLimit Maximum connections for the postgres user
   ##
-  postgresConnectionLimit: ""
+  postgresConnectionLimit: "2560"
   ## @param postgresql.dbUserConnectionLimit Maximum connections for the created user
   ##
   dbUserConnectionLimit: ""
@@ -573,9 +580,9 @@ postgresql:
 pgpoolImage:
   registry: docker.io
   repository: bitnami/pgpool
-  tag: 4.2.5-debian-10-r60
+  tag: 4.3.0-debian-10-r27
   ## Specify a imagePullPolicy. Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
-  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+  ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
   ##
   pullPolicy: IfNotPresent
   ## Optionally specify an array of imagePullSecrets.
@@ -615,6 +622,9 @@ pgpool:
   ## The secret must contain the keys "usernames" and "passwords" respectively.
   ##
   customUsersSecret: ""
+  ## @param pgpool.existingSecret Pgpool admin password using existing secret
+  ##
+  existingSecret: ""
   ## @param pgpool.srCheckDatabase Name of the database to perform streaming replication checks
   ##
   srCheckDatabase: postgres
@@ -671,7 +681,7 @@ pgpool:
   sidecars: []
   ## @param pgpool.replicaCount The number of replicas to deploy
   ##
-  replicaCount: 2
+  replicaCount: 1
   ## @param pgpool.podAnnotations Additional pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   ##
@@ -737,7 +747,7 @@ pgpool:
     enabled: true
     runAsUser: 1001
   ## Pgpool containers' resource requests and limits
-  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ## We usually recommend not to specify default resources and to leave this as a conscious
   ## choice for the user. This also increases chances charts run on environments with little
   ## resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -768,7 +778,7 @@ pgpool:
   ## @param pgpool.livenessProbe.successThreshold Success threshold for livenessProbe
   ##
   livenessProbe:
-    enabled: true
+    enabled: false
     initialDelaySeconds: 30
     periodSeconds: 10
     timeoutSeconds: 5
@@ -822,6 +832,9 @@ pgpool:
   ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy
   ##
   updateStrategy: {}
+  ## @param pgpool.containerPort Pgpool port
+  ##
+  containerPort: 5432
   ## @param pgpool.minReadySeconds How many seconds a pod needs to be ready before killing the next, during update
   ##
   minReadySeconds: ""
@@ -834,7 +847,7 @@ pgpool:
   ## @param pgpool.logConnections Log all client connections (PGPOOL_ENABLE_LOG_CONNECTIONS)
   ## ref: https://github.com/bitnami/bitnami-docker-pgpool#configuration
   ##
-  logConnections: false
+  logConnections: true
   ## @param pgpool.logHostname Log the client hostname instead of IP address (PGPOOL_ENABLE_LOG_HOSTNAME)
   ## ref: https://github.com/bitnami/bitnami-docker-pgpool#configuration
   ##
@@ -857,6 +870,14 @@ pgpool:
   ## ref: https://github.com/bitnami/bitnami-docker-pgpool#configuration
   ##
   numInitChildren: ""
+  ## @param pgpool.reservedConnections Number of reserved connections. When zero, excess connection block. When non-zero, excess connections are refused with an error message.
+  ## When this parameter is set to 1 or greater, incoming connections from clients are not accepted with error message
+  ## "Sorry, too many clients already", rather than blocked if the number of current connections from clients is more than
+  ## (num_init_children - reserved_connections).
+  ## ref: https://github.com/bitnami/bitnami-docker-pgpool#configuration
+  ##
+  reservedConnections: 0
+
   ## @param pgpool.maxPool The maximum number of cached connections in each child process (PGPOOL_MAX_POOL)
   ## ref: https://github.com/bitnami/bitnami-docker-pgpool#configuration
   ##
@@ -895,7 +916,7 @@ pgpool:
   ##   port = '5432'
   ##   ...
   ##
-  configuration: {}
+  configuration: ""
   ## @param pgpool.configurationCM ConfigMap with Pgpool configuration
   ## NOTE: This will override pgpool.configuration parameter
   ## The file used must be named `pgpool.conf`
@@ -990,9 +1011,9 @@ ldap:
 metricsImage:
   registry: docker.io
   repository: bitnami/postgres-exporter
-  tag: 0.10.0-debian-10-r120
+  tag: 0.10.1-debian-10-r21
   ## Specify a imagePullPolicy. Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
-  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+  ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
   ##
   pullPolicy: IfNotPresent
   ## Optionally specify an array of imagePullSecrets.
@@ -1021,7 +1042,7 @@ metrics:
     enabled: true
     runAsUser: 1001
   ## Prometheus exporter containers' resource requests and limits
-  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ## We usually recommend not to specify default resources and to leave this as a conscious
   ## choice for the user. This also increases chances charts run on environments with little
   ## resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -1042,6 +1063,9 @@ metrics:
     ##    memory: 256Mi
     ##
     requests: {}
+  ## @param metrics.containerPort Prometheus metrics exporter port
+  ##
+  containerPort: 9187
   ## Prometheus exporter container's liveness probe
   ## ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
   ## @param metrics.livenessProbe.enabled Enable livenessProbe
@@ -1052,7 +1076,7 @@ metrics:
   ## @param metrics.livenessProbe.successThreshold Success threshold for livenessProbe
   ##
   livenessProbe:
-    enabled: true
+    enabled: false
     initialDelaySeconds: 30
     periodSeconds: 10
     timeoutSeconds: 5
@@ -1120,7 +1144,7 @@ metrics:
     ##
     loadBalancerSourceRanges: []
     ## @param metrics.service.externalTrafficPolicy PostgreSQL Prometheus exporter service external traffic policy
-    ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
+    ## ref https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
     ##
     externalTrafficPolicy: Cluster
   ## @param metrics.annotations [object] Annotations for PostgreSQL Prometheus exporter service
@@ -1159,7 +1183,7 @@ metrics:
     ## @param metrics.serviceMonitor.namespace Optional namespace which Prometheus is running in
     ## Fallback to the prometheus default unless specified
     ##
-    namespace: "postgres"
+    namespace: ""
     ## @param metrics.serviceMonitor.interval How frequently to scrape metrics (use by default, falling back to Prometheus' default)
     ## e.g:
     ## interval: 10s
@@ -1199,9 +1223,9 @@ metrics:
 volumePermissionsImage:
   registry: docker.io
   repository: bitnami/bitnami-shell
-  tag: 10-debian-10-r252
+  tag: 10-debian-10-r333
   ## Specify a imagePullPolicy. Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
-  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+  ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
   ##
   pullPolicy: IfNotPresent
   ## Optionally specify an array of imagePullSecrets.
@@ -1225,7 +1249,7 @@ volumePermissions:
   securityContext:
     runAsUser: 0
   ## Init container' resource requests and limits
-  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ## We usually recommend not to specify default resources and to leave this as a conscious
   ## choice for the user. This also increases chances charts run on environments with little
   ## resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -1266,7 +1290,7 @@ persistence:
   ## If undefined (the default) or set to null, no storageClassName spec is
   ## set, choosing the default provisioner.
   ##
-  storageClass: "longhorn-single"
+  storageClass: ""
   ## @param persistence.mountPath The path the volume will be mounted at, useful when using different PostgreSQL images.
   ##
   mountPath: /bitnami/postgresql
@@ -1323,7 +1347,7 @@ service:
   ##
   clusterIP: ""
   ## @param service.externalTrafficPolicy Enable client source IP preservation
-  ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
+  ## ref https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
   ##
   externalTrafficPolicy: Cluster
   ## @param service.sessionAffinity Control where client requests go, to the same pod or round-robin
@@ -1350,3 +1374,18 @@ networkPolicy:
   ## (with the correct destination port).
   ##
   allowExternal: true
+  ## @param networkPolicy.egressRules.denyConnectionsToExternal Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53)
+  ## @param networkPolicy.egressRules.customRules [object] Custom network policy rule
+  ##
+  egressRules:
+    # Deny connections to external. This is not compatible with an external database.
+    denyConnectionsToExternal: false
+    ## Additional custom egress rules
+    ## e.g:
+    ## customRules:
+    ##   - to:
+    ##       - namespaceSelector:
+    ##           matchLabels:
+    ##             label: example
+    ##
+    customRules: []

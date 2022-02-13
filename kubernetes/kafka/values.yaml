@@ -137,7 +137,7 @@ heapOpts: -Xmx1024m -Xms1024m
 deleteTopicEnable: false
 ## @param autoCreateTopicsEnable Switch to enable auto creation of topics. Enabling auto creation of topics not recommended for production or similar environments
 ##
-autoCreateTopicsEnable: true
+autoCreateTopicsEnable: false
 ## @param logFlushIntervalMessages The number of messages to accept before forcing a flush of data to disk
 ##
 logFlushIntervalMessages: _10000
@@ -182,7 +182,7 @@ numIoThreads: 8
 numNetworkThreads: 3
 ## @param numPartitions The default number of log partitions per topic
 ##
-numPartitions: 1
+numPartitions: 10
 ## @param numRecoveryThreadsPerDataDir The number of threads per data directory to be used for log recovery at startup and flushing at shutdown
 ##
 numRecoveryThreadsPerDataDir: 1
@@ -417,7 +417,7 @@ interBrokerListenerName: INTERNAL
 
 ## @param replicaCount Number of Kafka nodes
 ##
-replicaCount: 1
+replicaCount: 2
 ## @param minBrokerId Minimal broker.id value, nodes increment their `broker.id` respectively
 ## Brokers increment their ID starting at this minimal value.
 ## E.g., with `minBrokerId=100` and 3 nodes, IDs will be 100, 101, 102 for brokers 0, 1, and 2, respectively.
@@ -1224,9 +1224,9 @@ metrics:
 provisioning:
   ## @param provisioning.enabled Enable kafka provisioning Job
   ##
-  enabled: false
+  enabled: true
   ## @param provisioning.numPartitions Default number of partitions for topics when unspecified.
-  numPartitions: 1
+  numPartitions: 10
   ## @param provisioning.replicationFactor Default replication factor for topics when unspecified.
   replicationFactor: 1
   ## @param provisioning.schedulerName Name of the k8s scheduler (other than default) for kafka provisioning
@@ -1277,6 +1277,9 @@ provisioning:
       partitions: 10
       replicationFactor: 1
     - name: Packetfilter
+      partitions: 10
+      replicationFactor: 1
+    - name: userUpdate
       partitions: 10
       replicationFactor: 1
 

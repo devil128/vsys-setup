@@ -1,0 +1,56 @@
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-db
+
+spec:
+  serviceName: postgres-db
+  selector:
+    matchLabels:
+      app: postgres-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgres-db
+    spec:
+      containers:
+        - name: postgresql-db
+          image: postgres:latest
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /data
+              name: postgresdb
+          env:
+            - name: POSTGRES_PASSWORD
+              value: password
+            - name: PGDATA
+              value: /data/pgdata
+          resources:
+            requests:
+              cpu: "0.1"
+  # Volume Claim
+  volumeClaimTemplates:
+    - metadata:
+        name: postgresdb
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: longhorn-single
+        resources:
+          requests:
+            storage: 8Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-db
+spec:
+  type: ClusterIP
+  selector:
+    app: postgres-db
+  ports:
+  - port: 5432
+    targetPort: 5432

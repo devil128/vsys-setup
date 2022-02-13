@@ -1,0 +1,483 @@
+
+[agregator-vsys] 2022-02-11 10:07:32.579 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : {"srcMac":"40:a6:e8:e9:e8:f0","srcIp":"-1121211776226507347","timestamp":"Feb 11, 2022, 9:59:24 AM","count":2}
+[agregator-vsys] 2022-02-11 10:07:32.579 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[agregator-vsys] 2022-02-11 10:07:32.579 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : Replay count: 21
+[agregator-vsys] 2022-02-11 10:07:32.590  INFO 1 --- [ntainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-aggregator-1, groupId=aggregator] Seeking to offset 6008401 for partition userUpdate-0
+[agregator-vsys] 2022-02-11 10:07:32.591 ERROR 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : Error handler threw an exception
+[agregator-vsys]
+[agregator-vsys] org.springframework.kafka.KafkaException: Seek to current after exception; nested exception is org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.SeekUtils.seekOrRecover(SeekUtils.java:206) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.DefaultErrorHandler.handleRemaining(DefaultErrorHandler.java:133) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeErrorHandler(KafkaMessageListenerContainer.java:2623) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2492) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeWithRecords(KafkaMessageListenerContainer.java:2403) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeRecordListener(KafkaMessageListenerContainer.java:2282) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeListener(KafkaMessageListenerContainer.java:1956) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeIfHaveRecords(KafkaMessageListenerContainer.java:1351) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.pollAndInvoke(KafkaMessageListenerContainer.java:1342) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.run(KafkaMessageListenerContainer.java:1234) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+[agregator-vsys] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+[agregator-vsys] Caused by: org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.decorateException(KafkaMessageListenerContainer.java:2636) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2606) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeOnMessage(KafkaMessageListenerContainer.java:2567) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2481) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 9 common frames omitted
+[agregator-vsys] 	Suppressed: org.springframework.kafka.listener.ListenerExecutionFailedException: Restored Stack Trace
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:363) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] Caused by: org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:752) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:698) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at de.projectdw.aggregator.UpdateUserService$$EnhancerBySpringCGLIB$$355393d7.consume(<generated>) ~[classes/:na]
+[agregator-vsys] 	at jdk.internal.reflect.GeneratedMethodAccessor79.invoke(Unknown Source) ~[na:na]
+[agregator-vsys] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:56) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:347) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 11 common frames omitted
+[agregator-vsys]
+[agregator-vsys] 2022-02-11 10:07:32.604  WARN 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 42703
+[agregator-vsys] 2022-02-11 10:07:32.606 ERROR 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: column packetfilt0_.identity does not exist
+[agregator-vsys]   Position: 8
+[agregator-vsys] 2022-02-11 10:07:32.607 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : {"srcMac":"40:a6:e8:e9:e8:f0","srcIp":"-1121211776226507347","timestamp":"Feb 11, 2022, 9:59:24 AM","count":2}
+[agregator-vsys] 2022-02-11 10:07:32.607 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[agregator-vsys] 2022-02-11 10:07:32.607 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : Replay count: 21
+[agregator-vsys] 2022-02-11 10:07:32.620  INFO 1 --- [ntainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-aggregator-1, groupId=aggregator] Seeking to offset 6008401 for partition userUpdate-0
+[agregator-vsys] 2022-02-11 10:07:32.622 ERROR 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : Error handler threw an exception
+[agregator-vsys]
+[agregator-vsys] org.springframework.kafka.KafkaException: Seek to current after exception; nested exception is org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.SeekUtils.seekOrRecover(SeekUtils.java:206) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.DefaultErrorHandler.handleRemaining(DefaultErrorHandler.java:133) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeErrorHandler(KafkaMessageListenerContainer.java:2623) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2492) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeWithRecords(KafkaMessageListenerContainer.java:2403) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeRecordListener(KafkaMessageListenerContainer.java:2282) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeListener(KafkaMessageListenerContainer.java:1956) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeIfHaveRecords(KafkaMessageListenerContainer.java:1351) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.pollAndInvoke(KafkaMessageListenerContainer.java:1342) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.run(KafkaMessageListenerContainer.java:1234) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+[agregator-vsys] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+[agregator-vsys] Caused by: org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.decorateException(KafkaMessageListenerContainer.java:2636) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2606) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeOnMessage(KafkaMessageListenerContainer.java:2567) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2481) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 9 common frames omitted
+[agregator-vsys] 	Suppressed: org.springframework.kafka.listener.ListenerExecutionFailedException: Restored Stack Trace
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:363) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] Caused by: org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:752) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:698) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at de.projectdw.aggregator.UpdateUserService$$EnhancerBySpringCGLIB$$355393d7.consume(<generated>) ~[classes/:na]
+[agregator-vsys] 	at jdk.internal.reflect.GeneratedMethodAccessor79.invoke(Unknown Source) ~[na:na]
+[agregator-vsys] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:56) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:347) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 11 common frames omitted
+[agregator-vsys]
+[agregator-vsys] 2022-02-11 10:07:32.652  WARN 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 42703
+[agregator-vsys] 2022-02-11 10:07:32.653 ERROR 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: column packetfilt0_.identity does not exist
+[agregator-vsys]   Position: 8
+[agregator-vsys] 2022-02-11 10:07:32.653 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : {"srcMac":"40:a6:e8:e9:e8:f0","srcIp":"-1121211776226507347","timestamp":"Feb 11, 2022, 9:59:24 AM","count":2}
+[agregator-vsys] 2022-02-11 10:07:32.653 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[agregator-vsys] 2022-02-11 10:07:32.653 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : Replay count: 21
+[agregator-vsys] 2022-02-11 10:07:32.664  INFO 1 --- [ntainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-aggregator-1, groupId=aggregator] Seeking to offset 6008401 for partition userUpdate-0
+[agregator-vsys] 2022-02-11 10:07:32.666 ERROR 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : Error handler threw an exception
+[agregator-vsys]
+[agregator-vsys] org.springframework.kafka.KafkaException: Seek to current after exception; nested exception is org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.SeekUtils.seekOrRecover(SeekUtils.java:206) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.DefaultErrorHandler.handleRemaining(DefaultErrorHandler.java:133) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeErrorHandler(KafkaMessageListenerContainer.java:2623) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2492) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeWithRecords(KafkaMessageListenerContainer.java:2403) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeRecordListener(KafkaMessageListenerContainer.java:2282) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeListener(KafkaMessageListenerContainer.java:1956) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeIfHaveRecords(KafkaMessageListenerContainer.java:1351) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.pollAndInvoke(KafkaMessageListenerContainer.java:1342) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.run(KafkaMessageListenerContainer.java:1234) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+[agregator-vsys] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+[agregator-vsys] Caused by: org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.decorateException(KafkaMessageListenerContainer.java:2636) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2606) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeOnMessage(KafkaMessageListenerContainer.java:2567) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2481) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 9 common frames omitted
+[agregator-vsys] 	Suppressed: org.springframework.kafka.listener.ListenerExecutionFailedException: Restored Stack Trace
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:363) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] Caused by: org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:752) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:698) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at de.projectdw.aggregator.UpdateUserService$$EnhancerBySpringCGLIB$$355393d7.consume(<generated>) ~[classes/:na]
+[agregator-vsys] 	at jdk.internal.reflect.GeneratedMethodAccessor79.invoke(Unknown Source) ~[na:na]
+[agregator-vsys] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:56) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:347) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 11 common frames omitted
+[agregator-vsys]
+[agregator-vsys] 2022-02-11 10:07:32.673  WARN 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 42703
+[agregator-vsys] 2022-02-11 10:07:32.673 ERROR 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: column packetfilt0_.identity does not exist
+[agregator-vsys]   Position: 8
+[agregator-vsys] 2022-02-11 10:07:32.674 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : {"srcMac":"40:a6:e8:e9:e8:f0","srcIp":"-1121211776226507347","timestamp":"Feb 11, 2022, 9:59:24 AM","count":2}
+[agregator-vsys] 2022-02-11 10:07:32.674 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[agregator-vsys] 2022-02-11 10:07:32.674 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : Replay count: 21
+[agregator-vsys] 2022-02-11 10:07:32.676 ERROR 1 --- [ntainer#0-0-C-1] o.s.kafka.listener.DefaultErrorHandler   : Backoff FixedBackOff{interval=0, currentAttempts=10, maxAttempts=9} exhausted for userUpdate-0@6008401
+[agregator-vsys]
+[agregator-vsys] org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.decorateException(KafkaMessageListenerContainer.java:2636) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2606) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeOnMessage(KafkaMessageListenerContainer.java:2567) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2481) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeWithRecords(KafkaMessageListenerContainer.java:2403) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeRecordListener(KafkaMessageListenerContainer.java:2282) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeListener(KafkaMessageListenerContainer.java:1956) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeIfHaveRecords(KafkaMessageListenerContainer.java:1351) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.pollAndInvoke(KafkaMessageListenerContainer.java:1342) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.run(KafkaMessageListenerContainer.java:1234) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+[agregator-vsys] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+[agregator-vsys] 	Suppressed: org.springframework.kafka.listener.ListenerExecutionFailedException: Restored Stack Trace
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:363) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] Caused by: org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:752) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:698) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at de.projectdw.aggregator.UpdateUserService$$EnhancerBySpringCGLIB$$355393d7.consume(<generated>) ~[classes/:na]
+[agregator-vsys] 	at jdk.internal.reflect.GeneratedMethodAccessor79.invoke(Unknown Source) ~[na:na]
+[agregator-vsys] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:56) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:347) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 11 common frames omitted
+[agregator-vsys]
+[agregator-vsys] 2022-02-11 10:07:32.676  INFO 1 --- [ntainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-aggregator-1, groupId=aggregator] Seeking to offset 6008402 for partition userUpdate-0
+[agregator-vsys] 2022-02-11 10:07:32.896  WARN 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 42703
+[agregator-vsys] 2022-02-11 10:07:32.896 ERROR 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: column packetfilt0_.identity does not exist
+[agregator-vsys]   Position: 8
+[agregator-vsys] 2022-02-11 10:07:32.897 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : {"srcMac":"40:a6:e8:e9:e8:f0","srcIp":"-1121211776226507347","timestamp":"Feb 11, 2022, 9:59:24 AM","count":2}
+[agregator-vsys] 2022-02-11 10:07:32.897 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[agregator-vsys] 2022-02-11 10:07:32.897 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : Replay count: 21
+[agregator-vsys] 2022-02-11 10:07:32.908  INFO 1 --- [ntainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-aggregator-1, groupId=aggregator] Seeking to offset 6008402 for partition userUpdate-0
+[agregator-vsys] 2022-02-11 10:07:32.910 ERROR 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : Error handler threw an exception
+[agregator-vsys]
+[agregator-vsys] org.springframework.kafka.KafkaException: Seek to current after exception; nested exception is org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.SeekUtils.seekOrRecover(SeekUtils.java:206) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.DefaultErrorHandler.handleRemaining(DefaultErrorHandler.java:133) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeErrorHandler(KafkaMessageListenerContainer.java:2623) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2492) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeWithRecords(KafkaMessageListenerContainer.java:2403) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeRecordListener(KafkaMessageListenerContainer.java:2282) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeListener(KafkaMessageListenerContainer.java:1956) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeIfHaveRecords(KafkaMessageListenerContainer.java:1351) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.pollAndInvoke(KafkaMessageListenerContainer.java:1342) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.run(KafkaMessageListenerContainer.java:1234) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+[agregator-vsys] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+[agregator-vsys] Caused by: org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.decorateException(KafkaMessageListenerContainer.java:2636) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2606) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeOnMessage(KafkaMessageListenerContainer.java:2567) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2481) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 9 common frames omitted
+[agregator-vsys] 	Suppressed: org.springframework.kafka.listener.ListenerExecutionFailedException: Restored Stack Trace
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:363) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] Caused by: org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:752) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:698) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at de.projectdw.aggregator.UpdateUserService$$EnhancerBySpringCGLIB$$355393d7.consume(<generated>) ~[classes/:na]
+[agregator-vsys] 	at jdk.internal.reflect.GeneratedMethodAccessor79.invoke(Unknown Source) ~[na:na]
+[agregator-vsys] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:56) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:347) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 11 common frames omitted
+[agregator-vsys]
+[agregator-vsys] 2022-02-11 10:07:32.919  WARN 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 42703
+[agregator-vsys] 2022-02-11 10:07:32.919 ERROR 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: column packetfilt0_.identity does not exist
+[agregator-vsys]   Position: 8
+[agregator-vsys] 2022-02-11 10:07:32.919 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : {"srcMac":"40:a6:e8:e9:e8:f0","srcIp":"-1121211776226507347","timestamp":"Feb 11, 2022, 9:59:24 AM","count":2}
+[agregator-vsys] 2022-02-11 10:07:32.920 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[agregator-vsys] 2022-02-11 10:07:32.920 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : Replay count: 21
+[agregator-vsys] 2022-02-11 10:07:32.931  INFO 1 --- [ntainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-aggregator-1, groupId=aggregator] Seeking to offset 6008402 for partition userUpdate-0
+[agregator-vsys] 2022-02-11 10:07:32.932 ERROR 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : Error handler threw an exception
+[agregator-vsys]
+[agregator-vsys] org.springframework.kafka.KafkaException: Seek to current after exception; nested exception is org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.SeekUtils.seekOrRecover(SeekUtils.java:206) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.DefaultErrorHandler.handleRemaining(DefaultErrorHandler.java:133) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeErrorHandler(KafkaMessageListenerContainer.java:2623) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2492) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeWithRecords(KafkaMessageListenerContainer.java:2403) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeRecordListener(KafkaMessageListenerContainer.java:2282) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeListener(KafkaMessageListenerContainer.java:1956) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeIfHaveRecords(KafkaMessageListenerContainer.java:1351) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.pollAndInvoke(KafkaMessageListenerContainer.java:1342) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.run(KafkaMessageListenerContainer.java:1234) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+[agregator-vsys] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+[agregator-vsys] Caused by: org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.decorateException(KafkaMessageListenerContainer.java:2636) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2606) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeOnMessage(KafkaMessageListenerContainer.java:2567) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2481) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 9 common frames omitted
+[agregator-vsys] 	Suppressed: org.springframework.kafka.listener.ListenerExecutionFailedException: Restored Stack Trace
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:363) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] Caused by: org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:752) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:698) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at de.projectdw.aggregator.UpdateUserService$$EnhancerBySpringCGLIB$$355393d7.consume(<generated>) ~[classes/:na]
+[agregator-vsys] 	at jdk.internal.reflect.GeneratedMethodAccessor79.invoke(Unknown Source) ~[na:na]
+[agregator-vsys] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:56) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:347) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 11 common frames omitted
+[agregator-vsys]
+[agregator-vsys] 2022-02-11 10:07:32.937  WARN 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 42703
+[agregator-vsys] 2022-02-11 10:07:32.937 ERROR 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: column packetfilt0_.identity does not exist
+[agregator-vsys]   Position: 8
+[agregator-vsys] 2022-02-11 10:07:32.938 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : {"srcMac":"40:a6:e8:e9:e8:f0","srcIp":"-1121211776226507347","timestamp":"Feb 11, 2022, 9:59:24 AM","count":2}
+[agregator-vsys] 2022-02-11 10:07:32.938 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[agregator-vsys] 2022-02-11 10:07:32.938 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : Replay count: 21
+[agregator-vsys] 2022-02-11 10:07:32.949  INFO 1 --- [ntainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-aggregator-1, groupId=aggregator] Seeking to offset 6008402 for partition userUpdate-0
+[agregator-vsys] 2022-02-11 10:07:32.950 ERROR 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : Error handler threw an exception
+[agregator-vsys]
+[agregator-vsys] org.springframework.kafka.KafkaException: Seek to current after exception; nested exception is org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.SeekUtils.seekOrRecover(SeekUtils.java:206) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.DefaultErrorHandler.handleRemaining(DefaultErrorHandler.java:133) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeErrorHandler(KafkaMessageListenerContainer.java:2623) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2492) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeWithRecords(KafkaMessageListenerContainer.java:2403) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeRecordListener(KafkaMessageListenerContainer.java:2282) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeListener(KafkaMessageListenerContainer.java:1956) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeIfHaveRecords(KafkaMessageListenerContainer.java:1351) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.pollAndInvoke(KafkaMessageListenerContainer.java:1342) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.run(KafkaMessageListenerContainer.java:1234) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+[agregator-vsys] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+[agregator-vsys] Caused by: org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.decorateException(KafkaMessageListenerContainer.java:2636) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2606) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeOnMessage(KafkaMessageListenerContainer.java:2567) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2481) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 9 common frames omitted
+[agregator-vsys] 	Suppressed: org.springframework.kafka.listener.ListenerExecutionFailedException: Restored Stack Trace
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:363) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] Caused by: org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:752) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:698) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at de.projectdw.aggregator.UpdateUserService$$EnhancerBySpringCGLIB$$355393d7.consume(<generated>) ~[classes/:na]
+[agregator-vsys] 	at jdk.internal.reflect.GeneratedMethodAccessor79.invoke(Unknown Source) ~[na:na]
+[agregator-vsys] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:56) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:347) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 11 common frames omitted
+[agregator-vsys]
+[agregator-vsys] 2022-02-11 10:07:32.958  WARN 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 42703
+[agregator-vsys] 2022-02-11 10:07:32.958 ERROR 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: column packetfilt0_.identity does not exist
+[agregator-vsys]   Position: 8
+[agregator-vsys] 2022-02-11 10:07:32.959 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : {"srcMac":"40:a6:e8:e9:e8:f0","srcIp":"-1121211776226507347","timestamp":"Feb 11, 2022, 9:59:24 AM","count":2}
+[agregator-vsys] 2022-02-11 10:07:32.959 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[agregator-vsys] 2022-02-11 10:07:32.959 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : Replay count: 21
+[agregator-vsys] 2022-02-11 10:07:32.970  INFO 1 --- [ntainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-aggregator-1, groupId=aggregator] Seeking to offset 6008402 for partition userUpdate-0
+[agregator-vsys] 2022-02-11 10:07:32.971 ERROR 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : Error handler threw an exception
+[agregator-vsys]
+[agregator-vsys] org.springframework.kafka.KafkaException: Seek to current after exception; nested exception is org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.SeekUtils.seekOrRecover(SeekUtils.java:206) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.DefaultErrorHandler.handleRemaining(DefaultErrorHandler.java:133) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeErrorHandler(KafkaMessageListenerContainer.java:2623) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2492) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeWithRecords(KafkaMessageListenerContainer.java:2403) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeRecordListener(KafkaMessageListenerContainer.java:2282) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeListener(KafkaMessageListenerContainer.java:1956) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeIfHaveRecords(KafkaMessageListenerContainer.java:1351) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.pollAndInvoke(KafkaMessageListenerContainer.java:1342) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.run(KafkaMessageListenerContainer.java:1234) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+[agregator-vsys] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+[agregator-vsys] Caused by: org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.decorateException(KafkaMessageListenerContainer.java:2636) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2606) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeOnMessage(KafkaMessageListenerContainer.java:2567) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2481) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 9 common frames omitted
+[agregator-vsys] 	Suppressed: org.springframework.kafka.listener.ListenerExecutionFailedException: Restored Stack Trace
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:363) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] Caused by: org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:752) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:698) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at de.projectdw.aggregator.UpdateUserService$$EnhancerBySpringCGLIB$$355393d7.consume(<generated>) ~[classes/:na]
+[agregator-vsys] 	at jdk.internal.reflect.GeneratedMethodAccessor79.invoke(Unknown Source) ~[na:na]
+[agregator-vsys] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:56) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:347) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 11 common frames omitted
+[agregator-vsys]
+[agregator-vsys] 2022-02-11 10:07:32.977  WARN 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 42703
+[agregator-vsys] 2022-02-11 10:07:32.977 ERROR 1 --- [ntainer#0-0-C-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: column packetfilt0_.identity does not exist
+[agregator-vsys]   Position: 8
+[agregator-vsys] 2022-02-11 10:07:32.978 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : {"srcMac":"40:a6:e8:e9:e8:f0","srcIp":"-1121211776226507347","timestamp":"Feb 11, 2022, 9:59:24 AM","count":2}
+[agregator-vsys] 2022-02-11 10:07:32.978 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[agregator-vsys] 2022-02-11 10:07:32.978 ERROR 1 --- [ntainer#0-0-C-1] d.p.aggregator.UpdateUserService         : Replay count: 21
+[agregator-vsys] 2022-02-11 10:07:32.989  INFO 1 --- [ntainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-aggregator-1, groupId=aggregator] Seeking to offset 6008402 for partition userUpdate-0
+[agregator-vsys] 2022-02-11 10:07:32.990 ERROR 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : Error handler threw an exception
+[agregator-vsys]
+[agregator-vsys] org.springframework.kafka.KafkaException: Seek to current after exception; nested exception is org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.SeekUtils.seekOrRecover(SeekUtils.java:206) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.DefaultErrorHandler.handleRemaining(DefaultErrorHandler.java:133) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeErrorHandler(KafkaMessageListenerContainer.java:2623) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2492) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeWithRecords(KafkaMessageListenerContainer.java:2403) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeRecordListener(KafkaMessageListenerContainer.java:2282) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeListener(KafkaMessageListenerContainer.java:1956) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeIfHaveRecords(KafkaMessageListenerContainer.java:1351) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.pollAndInvoke(KafkaMessageListenerContainer.java:1342) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.run(KafkaMessageListenerContainer.java:1234) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+[agregator-vsys] 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+[agregator-vsys] 	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+[agregator-vsys] Caused by: org.springframework.kafka.listener.ListenerExecutionFailedException: Listener method 'public void de.projectdw.aggregator.UpdateUserService.consume(java.lang.String) throws java.io.IOException' threw exception; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only; nested exception is org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.decorateException(KafkaMessageListenerContainer.java:2636) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2606) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.invokeOnMessage(KafkaMessageListenerContainer.java:2567) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener(KafkaMessageListenerContainer.java:2481) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 	... 9 common frames omitted
+[agregator-vsys] 	Suppressed: org.springframework.kafka.listener.ListenerExecutionFailedException: Restored Stack Trace
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:363) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:92) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.adapter.RecordMessagingMessageListenerAdapter.onMessage(RecordMessagingMessageListenerAdapter.java:53) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] 		at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.doInvokeOnMessage(KafkaMessageListenerContainer.java:2586) ~[spring-kafka-2.8.0.jar:2.8.0]
+[agregator-vsys] Caused by: org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:752) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:654) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:407) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:753) ~[spring-aop-5.3.13.jar:5.3.13]
+[agregator-vsys] 	at org.springframework.aop.framework.CglibAo

@@ -1,11 +1,14 @@
-LAST DEPLOYED: Tue Feb  8 13:31:18 2022
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /mnt/c/Users/Darvin/InteljiProjekte/basic-setup/setup-folder/config.yaml
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /mnt/c/Users/Darvin/InteljiProjekte/basic-setup/setup-folder/config.yaml
+NAME: postgres-ha
+LAST DEPLOYED: Sat Feb 12 15:50:08 2022
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None
 NOTES:
 CHART NAME: postgresql-ha
-CHART VERSION: 8.2.9
+CHART VERSION: 8.3.1
 APP VERSION: 11.14.0
 ** Please be patient while the chart is being deployed **
 PostgreSQL can be accessed through Pgpool via port 5432 on the following DNS name from within your cluster:
@@ -24,7 +27,7 @@ To get the password for "repmgr" run:
 
 To connect to your database run the following command:
 
-    kubectl run postgres-ha-postgresql-ha-client --rm --tty -i --restart='Never' --namespace default --image docker.io/bitnami/postgresql-repmgr:11.14.0-debian-10-r0 --env="PGPASSWORD=$POSTGRES_PASSWORD"  \
+    kubectl run postgres-ha-postgresql-ha-client --rm --tty -i --restart='Never' --namespace default --image docker.io/bitnami/postgresql-repmgr:11.14.0-debian-10-r86 --env="PGPASSWORD=$POSTGRES_PASSWORD"  \
         --command -- psql -h postgres-ha-postgresql-ha-pgpool -p 5432 -U postgres -d postgres
 
 To connect to your database from outside the cluster execute the following commands:
