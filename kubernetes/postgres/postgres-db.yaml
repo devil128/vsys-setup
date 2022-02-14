@@ -40,7 +40,7 @@ spec:
         storageClassName: longhorn-single
         resources:
           requests:
-            storage: 8Gi
+            storage: 12Gi
 
 ---
 apiVersion: v1
