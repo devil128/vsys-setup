@@ -1,0 +1,123 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: agregator-vsys-prod
+  labels:
+    app: agregator-vsys-prod
+
+spec:
+  replicas: 5
+  template:
+    metadata:
+      name: agregator-vsys-prod
+      labels:
+        app: agregator-vsys-prod
+    spec:
+      containers:
+        - name: agregator-vsys-prod
+          image: registry.projectdw.de/agregator-vsys
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "0.2"
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+  selector:
+    matchLabels:
+      app: agregator-vsys-prod
+
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: intrusion-saver
+  labels:
+    app: intrusion-saver
+
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: intrusion-saver
+      labels:
+        app: intrusion-saver
+    spec:
+      containers:
+        - name: intrusion-saver
+          image: registry.projectdw.de/intrusion-detection-saver:latest
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "0.2"
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+  selector:
+    matchLabels:
+      app: intrusion-saver
+
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: log-distributor
+  labels:
+    app: log-distributor
+
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: log-distributor
+      labels:
+        app: log-distributor
+    spec:
+      containers:
+        - name: log-distributor
+          image: registry.projectdw.de/log-manager
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "0.2"
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+  selector:
+    matchLabels:
+      app: log-distributor
+
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: packetfilter-saver
+  labels:
+    app: packetfilter-saver
+
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: packetfilter-saver
+      labels:
+        app: packetfilter-saver
+    spec:
+      containers:
+        - name: packetfilter-saver
+          image: registry.projectdw.de/packetfilter-saver
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "0.2"
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+  selector:
+    matchLabels:
+      app: packetfilter-saver
+
